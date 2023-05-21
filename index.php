@@ -92,6 +92,66 @@
 
 
         </div>
+        <br>
+        <hr>
+        <h2 class="text-center my-3">myForum - Add a new topic</h2>
+        <div class="row">
+        <?php
+
+if(isset($_SESSION['loggedin'])&& $_SESSION['loggedin']==true){
+
+   echo    '<div class="container">
+   <!-- THIS ACTION SUBMITS POST REQUEST TO SAME PAGE -->
+   <div class="container">
+ <form action="'. $_SERVER['REQUEST_URI'] .'" method="post">
+   <div class="mb-3">
+     <label for="title" class="form-label">Title</label>
+     <input type="text" class="form-control" name="title" id="title" aria-describedby="titleHelp">
+     <div id="titlehelp" class="form-text">keep your title brief</div>
+   </div>
+   <div class="form-floating">
+      <div>Description</div>
+      <br>
+     <textarea class="form-control" name="description" id="description"></textarea>
+     <!-- <input type="hidden" name="sno" value="'.$_SESSION["sno"].'"> -->
+   </div>
+   <br>
+   <button type="submit" class="btn btn-primary">Add Topic</button>
+ </form>
+ </div>
+ </div>
+';
+
+}
+else{
+    echo '<p class="lead text-center">You are not logged in. Please login to add a new topic.</p>';
+}
+?>
+
+
+<!-- INSERTING THE NEW TOPIC DETAILS IN THE DATABASE -->
+<?php
+       $showAlert=false;
+       if($_SERVER['REQUEST_METHOD']=='POST'){
+        $desc=$_POST['description'];
+        $title=$_POST["title"];
+
+        // SAVING FROM XSS ATTACK
+        // $comm=str_replace("<","&lt;",$comm);
+        // $comm=str_replace(">","&gt;",$comm);
+       
+        $sql="INSERT INTO `categories` (`category_id`, `category_name`, `category_description`, `created`) VALUES (NULL, '$title', '$desc', current_timestamp());";
+        $result=mysqli_query($conn,$sql);
+        $showAlert=true;
+        if($showAlert){
+           echo '<br><div class="alert my-3 alert-success alert-dismissible fade show" role="alert">
+              <strong>Success!</strong> New Category was added. 
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+        }
+       }
+    ?>
+        </div>
     </div>
 
 
