@@ -1,7 +1,7 @@
 <?php
     
 
-    session_start();
+    
     
 
     echo '<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">

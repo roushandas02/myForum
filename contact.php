@@ -1,4 +1,7 @@
-<!doctype html>
+<?php
+   include "partials/_dbconnect.php";
+   ?>
+   <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -23,7 +26,7 @@
 
 
    <?php
-   include "partials/_dbconnect.php";
+//    include "partials/_dbconnect.php";
       include "partials/_header.php";
    ?>
 

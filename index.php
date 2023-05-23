@@ -1,4 +1,7 @@
-<!doctype html>
+<?php
+   include "partials/_dbconnect.php";
+   ?>
+   <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -25,7 +28,7 @@
 
 
    <?php
-      include "partials/_dbconnect.php";
+    //   include "partials/_dbconnect.php";
       include "partials/_header.php";
 
    ?>
@@ -44,13 +47,13 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="https://picsum.photos/1600/300" class="d-block w-100" alt="...">
+            <img src="https://picsum.photos/1600/400" height="300px" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="https://picsum.photos/1600/300" class="d-block w-100" alt="...">
+            <img src="https://picsum.photos/1600/400" height="300px" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="https://picsum.photos/1600/300" class="d-block w-100" alt="...">
+            <img src="https://picsum.photos/1600/400" height="300px" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -77,13 +80,13 @@
                 $cat_id=$row['category_id'];
                 $cat_name=$row['category_name'];
                 $cat_desc=$row['category_description'];
-                echo '<div class="col-md-4 my-2">
+                echo '<div class="col-md-4 col-12 d-flex justify-content-evenly my-2">
                 <div class="card" style="width: 18rem;">
                     <img src="https://source.unsplash.com/200x200?'.$cat_name.'" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><a href="threadlist.php?catid='. $cat_id .'">' .$cat_name. '</a></h5>
                         <p class="card-text">'.substr($cat_desc,0,100).' </p>
-                        <a href="threadlist.php?catid='. $cat_id .'" class="btn btn-primary">view threads</a>
+                        <a href="threadlist.php?catid='. $cat_id .'" class="btn btn-primary d-flex justify-content-evenly">view threads</a>
                     </div>
                 </div>
                 </div>';
